@@ -5,7 +5,7 @@
 # Team Overview
 
 * Team Member Name 1, Github Username 1
-* Team Member Name 2, Github Username 2
+* Zhihan Ying, EveYing
 * Conan Chen, Conan Chen
 * William He, GithubdeWill 
 * Jacob Goldman, JacobGo
