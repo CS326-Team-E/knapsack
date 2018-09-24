@@ -4,7 +4,7 @@
 
 # Team Overview
 
-* Jingshu Meng, jingshumeng
+* Jingshu Meng, Jingshumeng
 * Zhihan Ying, EveYing
 * Conan Chen, Conan Chen
 * William He, GithubdeWill 
