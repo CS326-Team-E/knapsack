@@ -6,8 +6,8 @@
 
 * Team Member Name 1, Github Username 1
 * Team Member Name 2, Github Username 2
-* Conan Chen, Conan Chen 
-* Team Member Name 4, Github Username 4
+* Conan Chen, Conan Chen
+* William He, GithubdeWill 
 * Jacob Goldman, JacobGo
 
 # Innovative Idea
