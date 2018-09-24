@@ -6,7 +6,7 @@
 
 * Team Member Name 1, Github Username 1
 * Team Member Name 2, Github Username 2
-* Team Member Name 3, Github Username 3
+* Conan Chen, Conan Chen 
 * Team Member Name 4, Github Username 4
 * Team Member Name 5, Github Username 5
 
