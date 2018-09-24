@@ -4,7 +4,7 @@
 
 # Team Overview
 
-* Team Member Name 1, Github Username 1
+* Jingshu Meng, jingshumeng
 * Zhihan Ying, EveYing
 * Conan Chen, Conan Chen
 * William He, GithubdeWill 
