@@ -23,6 +23,7 @@
 
     <!-- Custom styles for this template -->
     <link href="welcome.css" rel="stylesheet">
+    <link rel="stylesheet" href="sign_up.css">
 
 
   </head>
@@ -52,36 +53,32 @@
 
 
     <!-- Header -->
-    <header class="masthead">
-      <div class="container d-flex h-100 align-items-center">
-        <div class="mx-auto text-center">
-          <div class="featured-text text-center text-lg-left">
-              <h1 class="text-white-50 mx-auto mt-2 mb-5">Sign Up</h1>
-              <form>
-                <div class="form-group">
-                  <label for="EmailLabel" class="text-black-50">Email address</label>
-                  <input type="email" class="form-control" id="email" placeholder="Enter email">
-                </div>
-                <div class="form-group">
-                  <label for="UsernameLabel" class="text-black-50">User Name</label>
-                  <input type="text" class="form-control" name="username" id="username" placeholder="Username">
-                </div>
-                <div class="form-group">
-                  <label for="PasswordLabel" class="text-black-50">Password</label>
-                  <input type="password" class="form-control" id="password" placeholder="Password">
-                </div>
-                <div class="form-group">
-                  <label for="ConfirmPasswordLabel" class="text-black-50">Confirm Password</label>
-                  <input type="password" class="form-control" name="password2" id="password2" placeholder="Confirm Password">
-                </div>
-                <div class="form-check">
-                  <center><button type="submit" class="btn btn-primary">Submit</button></center>
-                </div>
-              </form>
-            </div>
-        </div>
+    <body>
+
+      <div id="login-box">
+      <div class="left">
+        <h1>Sign up</h1>
+    
+        <input type="text" name="username" placeholder="Username" />
+        <input type="text" name="email" placeholder="E-mail" />
+        <input type="password" name="password" placeholder="Password" />
+        <input type="password" name="password2" placeholder="Retype password" />
+    
+        <input type="submit" name="signup_submit" value="Sign me up" />
       </div>
-    </header>
+  
+      <div class="right">
+        <span class="loginwith">Sign in wit'h<br />social network</span>
+        
+          <button class="social-signin facebook">Log in with facebook</button>
+          <button class="social-signin twitter">Log in with Twitter</button>'
+        <button class="social-signin google">Log in with Google+</button>
+      </div>
+      <div class="or">OR</div>
+    </div>
+  
+  
+</body>
 
     <!-- Footer -->
     <footer class="bg-black small text-center text-white-50">
