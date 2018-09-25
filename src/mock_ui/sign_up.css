@@ -6,7 +6,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: #DDD;
+  background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url("img/background.jpg");
   font-size: 16px;
   color: #222;
   font-family: 'Roboto', sans-serif;
