@@ -4,7 +4,7 @@ HOBOS
 knapsack
 # Team Overview
 
-* Jingshu Meng, Jingshumeng
+* Jingshu Meng, jingshumeng
 * Zhihan Ying, EveYing
 * Conan Chen, Conan Chen
 * William He, GithubdeWill 
