@@ -17,6 +17,8 @@ knapsack is an innovative platform designed to empower your campus experience by
 The applications that make up knapsack aren’t individually original, neither is the concept of collecting components in a single platform (see every app store ever). However, we are specifically targeting the college student audience and our voting system and modular design have never been accomplished in a single web app to our knowledge.
 
 # Important Data
+Knapsack uses 5 main sources of data: user credentials and information, metrics,  app requests, module data and configuration of “knapsacks” for individual users. User credentials and information include username, password and security questions if password is lost.  Metrics is mainly downloads and apps. App Requests refer to request proposals and votes from the users. Module data is for functionalities like schedule file, dining menu information and homework checklist, etc. Lastly, configuration of “knapsack” for individual users is for positioning of widgets, themes and colors.
+
 
 1. User Credentials & Information
 	* Username
