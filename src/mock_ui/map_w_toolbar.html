@@ -28,6 +28,7 @@
 
 </head>
 <body>
+    <a href="javascript:alert('Successfully cleared');location.reload();">Clear Cache</a>
     <div class="folium-map" id="map_df49c5dbd0f84c3984517681c68d36f4" ></div>
     <div class="fab">
       <span class="fab-action-button">
@@ -84,11 +85,11 @@
       });
 
     var tile_layer_9719b4616bfb4d09897feb6944dc1140 = L.tileLayer(
-        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}{r}.png',
         {
           "attribution": null,
           "detectRetina": false,
-          "maxZoom": 18,
+          "maxZoom": 19,
           "minZoom": 1,
           "noWrap": false,
           "subdomains": "abc"
