@@ -6,7 +6,6 @@
 body {
   margin: 0;
   padding: 0;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(22, 22, 22, 0.1)), color-stop(75%, rgba(22, 22, 22, 0.5)), to(#161616)), url("img/background.jpg");
   background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url("img/background.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -14,8 +13,7 @@ body {
   background-size: cover;
   font-size: 16px;
   color: #222;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 300;
+  font-family: 'Nunito';
 }
 
 #login-box {
@@ -116,9 +114,6 @@ input[type="submit"]:active {
   padding: 40px;
   width: 300px;
   height: 400px;
-  background: url('https://goo.gl/YbktSj');
-  background-size: cover;
-  background-position: center;
   border-radius: 0 2px 2px 0;
 }
 
@@ -137,11 +132,12 @@ button.social-signin {
   border: none;
   border-radius: 2px;
   color: #FFF;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Varela Round';
   font-weight: 500;
   transition: 0.2s ease;
   cursor: pointer;
 }
+
 
 button.social-signin:hover,
 button.social-signin:focus {
@@ -158,9 +154,7 @@ button.social-signin.facebook {
   background: #32508E;
 }
 
-button.social-signin.twitter {
-  background: #55ACEE;
-}
+
 
 button.social-signin.google {
   background: #DD4B39;

@@ -51,8 +51,34 @@
       </div>
     </nav>
 
+    <body>
+      <!-- mock data -->
+      <script type="text/javascript">
+        var users = [
+          {
+            name: "Ann",
+            password: "12345",
+            email: "ann@gmail.com"
+          },
+          {
+            name: "Peter",
+            password: "16384",
+            email: "peter@gmail.com"
+          },
+          {
+            name: "Jane",
+            password: "63845",
+            email: "Jane@gmail.com"
+          },
+        ];
 
-    <!-- Header -->
+        
+        person = JSON.stringify(users);
+        console.log(users);
+      </script>
+
+    </body>
+
     <body>
 
       <div id="login-box">
@@ -65,14 +91,16 @@
         <input type="password" name="password2" placeholder="Retype password" />
     
         <input type="submit" name="signup_submit" value="Sign me up" />
+
       </div>
   
       <div class="right">
         <span class="loginwith">Sign in wit'h<br />social network</span>
         
-          <button class="social-signin facebook">Log in with facebook</button>
-          <button class="social-signin twitter">Log in with Twitter</button>'
-        <button class="social-signin google">Log in with Google+</button>
+        <button class="social-signin facebook">Log in with facebook</button>
+        <button class="social-signin google">Log in with Google</button>
+
+
       </div>
       <div class="or">OR</div>
     </div>
