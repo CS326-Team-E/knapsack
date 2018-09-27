@@ -69,7 +69,7 @@ input[type="submit"] {
   margin-top: 28px;
   width: 120px;
   height: 32px;
-  background: #16a085;
+  background: #5F9EA0;
   border: none;
   border-radius: 2px;
   color: #FFF;
@@ -150,15 +150,6 @@ button.social-signin:active {
   transition: 0.2s ease;
 }
 
-button.social-signin.facebook {
-  background: #32508E;
-}
-
-
-
-button.social-signin.google {
-  background: #DD4B39;
-}
 
 a {
   color: #64a19d;
