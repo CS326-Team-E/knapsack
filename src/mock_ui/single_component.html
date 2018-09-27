@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+   crossorigin=""/>
+		<link rel="stylesheet" href="css/component.css">
+		<title>Single Component</title>
+	</head>
+	<body>
+		<div class="py-5 bg-light component">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4">
+						<img src="img/component_scheduler_icon.png" class="img-fluid">
+						<h2 class="text-center mt-2">Campus Scheduler</h2>
+					</div>
+					<div class="col-md-8 pl-5">
+						<p class="lead">Campus Scheduler will generate an interactive map of the campus with the location of your classes and optimal routes highlighted.</p>
+						<h5 class='py-2'>To get started, upload your calendar file:</h5>
+	          <form action="" method="post" enctype="multipart/form-data" id="js-upload-form">
+		          <input class="box__file" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
+					    <label for="file"><strong>Choose a file</strong><span class="box__dragndrop"> or drag it here</span>.</label>
+	          </form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="margin-top: -2rem">
+				<div id="mapid"></div>
+			</div>
+	</body>
+
+	 <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+   integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+   crossorigin=""></script>
+	<script>
+	const mymap = L.map('mapid').setView([42.3901, -72.5292], 16);
+	const CartoDB_Positron = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}{r}.png', {
+	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+	subdomains: 'abcd',
+	maxZoom: 19
+}).addTo(mymap);
+	</script>
+</html>

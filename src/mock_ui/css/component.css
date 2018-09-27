@@ -1,0 +1,29 @@
+#js-upload-form {
+    outline: 2px dashed white;
+    outline-offset: -5px;
+    color: black;
+    background-color: #ededed;
+    padding: 2.5rem 1.5rem 2.5rem 1.5rem;
+}
+.box__file {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+    
+}
+label {
+  display: block;
+  text-align: center;
+}
+
+
+#mapid { 
+  height: 450px;
+  margin-top: -2rem;
+  max-width: 75%;
+  margin: auto;
+  box-shadow: 0 10px 40px 0 rgba(0,0,0,.15);
+}
