@@ -40,3 +40,16 @@ Knapsack uses 5 main sources of data: user credentials and information, metrics,
 # User Interface
 
 Our user interface consists of a welcome page with an explanation of knapsack with accompanying images and a signup form. Throughout the platform, there will be a floating knapsack icon that expands into a navigation bar for access to the component applications. In addition, there will be a library in which the user browses for tools and assembles their knapsack. We will mock out an individual component application as well. Lastly, there will be an interface for requesting and voting for component ideas.
+
+1. Welcome page
+![welcome](imgs/welcome.png)
+2. Sign in
+![sign_in](imgs/sign_in.png)
+3. Floating knapsack icon
+![knapsack](imgs/knapsack_icon.png)
+4. Library
+![library](imgs/library.png)
+5. Single component
+![single_component](imgs/single_component.png)
+6. Request component
+![request_component](imgs/request_component.png)
