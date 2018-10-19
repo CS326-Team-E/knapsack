@@ -20,6 +20,7 @@ class Tool(models.Model):
 
     identifier = models.CharField(max_length=40, unique=True)
     path = models.CharField(max_length=40)
+    description = models.TextField()
 
 class Question(models.Model):
   username = models.ForeignKey('User', on_delete = models.SET_NULL, null=True)
@@ -31,4 +32,4 @@ class Question(models.Model):
 
   def get_absolute_url(self):
     return reverse('question-detail', args=[str(self.id)])
-   description = models.TextField()
+
