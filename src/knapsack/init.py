@@ -42,9 +42,8 @@ for i in range(1, 10):
 
 # Create Knapsacks
 knapsacks = []
-for i in range(1, 50):
-  a_owner = users[fake.random_int(0, len(users)) - 1]
-  knapsack = Knapsack(owner=a_owner)
+for user in users:
+  knapsack = Knapsack(owner=user)
   knapsack.save()
   # Add a random number of tools
   random_max = fake.random_int(2, 11)
