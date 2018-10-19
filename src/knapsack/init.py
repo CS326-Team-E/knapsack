@@ -1,6 +1,3 @@
-import textwrap
-from datetime import timedelta
-
 # Create a super user to use the admin site.
 from django.contrib.auth.models import User as DjangoUser
 from faker import Faker
