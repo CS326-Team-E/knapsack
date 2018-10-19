@@ -24,7 +24,7 @@ class Tool(models.Model):
 
 class Question(models.Model):
   username = models.ForeignKey('User', on_delete = models.SET_NULL, null=True)
-  question = models.CharField(max_length=200)
+  question = models.CharField(max_length=100)
   answer = models.CharField(max_length=100)
 
   def __str__(self):
