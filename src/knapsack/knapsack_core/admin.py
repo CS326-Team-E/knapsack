@@ -25,6 +25,7 @@ class UserAdmin(admin.ModelAdmin):
 class QuestionAdmin(admin.ModelAdmin):
 	list_display = ("question", "username")
 
+# Register the other models normally
 admin.site.register(Knapsack)
 admin.site.register(Tool)
 	
