@@ -8,7 +8,9 @@ class User(AbstractBaseUser):
     identifier = models.CharField(max_length=40, unique=True)
     user_knapsack = models.ForeignKey('Knapsack', on_delete=models.SET_NULL, null=True)
     USERNAME_FIELD='identifier'
-
+    
+    class Meta:
+    	ordering = ["identifier"]
 
 class Knapsack(models.Model):
 
@@ -18,6 +20,9 @@ class Knapsack(models.Model):
 
     def __str__(self):
       return str(self.owner) + "'s knapsack"
+      
+    class Meta:
+    	ordering = ["owner"]
 
 class Tool(models.Model):
 
@@ -27,6 +32,9 @@ class Tool(models.Model):
 
     def __str__(self):
       return self.identifier
+    
+    class Meta:
+    	ordering = ["identifier"]
 
 class Question(models.Model):
   username = models.ForeignKey('User', on_delete = models.SET_NULL, null=True)
@@ -38,4 +46,7 @@ class Question(models.Model):
 
   def get_absolute_url(self):
     return reverse('question-detail', args=[str(self.id)])
+    
+  class Meta:
+  	ordering = ["username"]
 
