@@ -1,6 +1,7 @@
 # Create a super user to use the admin site.
 from django.contrib.auth.models import User as DjangoUser
 from faker import Faker
+from django.utils import timezone
 
 from knapsack_core.models import User, Question, Knapsack, Tool
 
@@ -10,7 +11,11 @@ fake = Faker()
 users = []
 for i in range(0, 50):
   a_identifier = fake.safe_email()
-  user = User(identifier=a_identifier)
+  a_password = fake.password()
+  a_last_login = fake.date_time_this_month(
+    before_now=True, after_now=False, tzinfo=timezone.get_default_timezone()
+  )
+  user = User(identifier=a_identifier, password=a_password, last_login=a_last_login)
   user.save()
   users.append(user)
 
@@ -53,9 +58,9 @@ for knapsack in knapsacks:
   user.user_knapsack = knapsack
   user.save()
 
-username = "compsci326"
-password = "compsci326"
-email = "compsci@326.edu"
+username = "admin"
+password = "admin"
+email = "admin@326.edu"
 adminuser = DjangoUser.objects.create_user(username, email, password)
 adminuser.save()
 adminuser.is_superuser = True
