@@ -1,5 +1,5 @@
 from django.contrib import admin
-from knapsack_core.models import User, Question, Knapsack, Tool
+from knapsack_core.models import User, Question, Knapsack, Tool, ToolRequest
 
 # Register your models here.
 
@@ -28,4 +28,4 @@ class QuestionAdmin(admin.ModelAdmin):
 # Register the other models normally
 admin.site.register(Knapsack)
 admin.site.register(Tool)
-	
+admin.site.register(ToolRequest)

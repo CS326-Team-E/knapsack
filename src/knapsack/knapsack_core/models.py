@@ -50,3 +50,27 @@ class Question(models.Model):
   class Meta:
   	ordering = ["username"]
 
+
+class ToolRequest(models.Model):
+  username = models.ForeignKey('User', on_delete = models.SET_NULL, null=True)
+  title = models.CharField(max_length=50)
+  request = models.TextField()
+
+  def __str__(self):
+    return self.title
+  
+  def get_absolute_url(self):
+    return reverse('question-detail', args=[str(self.id)])
+  
+  class Meta:
+  	ordering = ["title"]
+
+class ToolVote(models.Model):
+  username = models.ForeignKey('User', on_delete = models.CASCADE)
+  request = models.ForeignKey('ToolRequest', on_delete = models.CASCADE)
+  
+  def __str__(self):
+    return str(self.username) + ' votes for ' +  str(self.request)
+
+  class Meta:
+    unique_together = ('username', 'request',)

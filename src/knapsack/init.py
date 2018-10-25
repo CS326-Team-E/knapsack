@@ -2,8 +2,9 @@
 from django.contrib.auth.models import User as DjangoUser
 from faker import Faker
 from django.utils import timezone
+import random 
 
-from knapsack_core.models import User, Question, Knapsack, Tool
+from knapsack_core.models import User, Question, Knapsack, Tool, ToolRequest, ToolVote
 
 fake = Faker()
 
@@ -57,6 +58,24 @@ for knapsack in knapsacks:
   user = knapsack.owner
   user.user_knapsack = knapsack
   user.save()
+
+# Create ToolRequests
+toolrequests = []
+for i in range(0,5):
+  tr = ToolRequest(username=random.choice(users))
+  tr.title = str.title(fake.text(10))
+  tr.request = fake.text(50)
+  tr.save()
+  toolrequests.append(tr)
+
+# Create votes
+for tr in toolrequests:
+  available_users = users.copy()
+  for i in range(0, random.randint(5,25)):
+    user = random.choice(available_users)
+    available_users.remove(user)
+    vote = ToolVote(username=user, request=tr)
+    vote.save()
 
 username = "admin"
 password = "admin"
