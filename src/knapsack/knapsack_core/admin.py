@@ -1,5 +1,5 @@
 from django.contrib import admin
-from knapsack_core.models import User, Question, Knapsack, Tool, ToolRequest
+from knapsack_core.models import User, Question, Knapsack, Tool, ToolRequest, ToolVote
 
 # Register your models here.
 
@@ -28,4 +28,12 @@ class QuestionAdmin(admin.ModelAdmin):
 # Register the other models normally
 admin.site.register(Knapsack)
 admin.site.register(Tool)
-admin.site.register(ToolRequest)
+
+
+
+@admin.register(ToolRequest)
+class ToolRequestAdmin(admin.ModelAdmin):
+	list_display = ('username', 'title', 'request', 'get_votes')
+
+	def get_votes(self, obj):
+		return len(ToolVote.objects.filter(request_id=obj.id))
