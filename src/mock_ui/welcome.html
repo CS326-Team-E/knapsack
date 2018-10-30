@@ -33,14 +33,21 @@
           Menu
           <i class="fas fa-bars"></i>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="map_w_toolbar.html">welcome</a>
+            </li>
+            {% else %}
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#signin">Sign In</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="sign_up.html">Sign Up</a>
             </li>
+            {% endif %}
           </ul>
         </div>
       </div>
@@ -57,6 +64,14 @@
       </div>
     </header>
 
+    {% if user.is_authenticated %}
+      <!-- Footer -->
+      <footer class="bg-black small text-center text-white-50" style="padding: 5rem 0;">
+        <div class="container">
+          Copyright &copy; HOBOS 2018
+        </div>
+      </footer>
+    {% else %}
     <!-- Projects Section -->
     <section id="signin" style="padding: 5rem">
       <div class="container">
@@ -92,6 +107,7 @@
         Copyright &copy; HOBOS 2018
       </div>
     </footer>
+    {% endif %}
 
     <!-- Custom scripts for this template -->
     <script src="welcome.js"></script>
