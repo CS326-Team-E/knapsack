@@ -38,7 +38,7 @@
           <ul class="navbar-nav ml-auto">
             {% if user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="map_w_toolbar.html">welcome</a>
+                <a class="nav-link js-scroll-trigger" href="map_w_toolbar.html">Map</a>
             </li>
             {% else %}
             <li class="nav-item">
@@ -84,7 +84,7 @@
           <div style="padding: 0 0 0 2rem" class="col-xl-4 col-lg-5">
             <div class="featured-text text-center text-lg-left">
               <h4 class="text-black-50">Sign In</h4>
-              <form action="library.html">
+              <form action="library.html" method="POST">
                 <div class="form-group">
                   <label for="exampleInputEmail1" class="text-black-50">Email address</label>
                   <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
@@ -94,7 +94,8 @@
                   <input type="password" class="form-control" name="password" id="password" placeholder="Password">
                 </div>
                 <div class="form-check">
-                  <button type="submit" class="btn btn-primary">Submit</button></conter>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
               </form>
             </div>
           </div>
