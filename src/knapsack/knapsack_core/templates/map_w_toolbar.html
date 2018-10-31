@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<head>
+    {% load static %}
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script>L_PREFER_CANVAS = false; L_NO_TOUCH = false; L_DISABLE_3D = false;</script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css" />
+    <link rel="stylesheet" href="https://rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css" />
+    <link rel="stylesheet" href="{% static 'mapview.css' %}" />
+
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style> #map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <style> #map_df49c5dbd0f84c3984517681c68d36f4 {
+
+        z-index: 1;
+        width : 100.0%;
+        height: 100.0%;
+        left: 0.0%;
+        top: 0.0%;
+        }
+    </style>
+
+</head>
+<body>
+    <a href="javascript:alert('Successfully cleared');location.reload();">Clear Cache</a>
+    <div class="folium-map" id="map_df49c5dbd0f84c3984517681c68d36f4" ></div>
+    <div class="fab">
+      <span class="fab-action-button">
+        <i class="fab-action-button__icon"></i>
+      </span>
+
+      <ul class="fab-buttons">
+      {% if tool_list %}
+        {% for tool in tool_list %}
+        <li class="fab-buttons__item">
+          <a href="#" class="fab-buttons__link" id='{{ tool.id }}' data-tooltip="{{ tool.identifier }}">
+            <i class="icon-material icon-material_gen"></i>
+          </a>
+        </li>
+        {% endfor %}
+
+      {% else %}
+        <li class="fab-buttons__item">
+          <a href="#" class="fab-buttons__link" id='no_tool' data-tooltip="Click to add tools">
+            <i class="icon-material icon-material_gen"></i>
+          </a>
+        </li>
+      {% endif %}
+      </ul>
+    </div>
+</body>
+<script>
+
+    var map_df49c5dbd0f84c3984517681c68d36f4 = L.map(
+      'map_df49c5dbd0f84c3984517681c68d36f4',
+      {
+        center: [42.391155,-72.526711],
+        zoom: 15,
+        maxBounds: null,
+        layers: [],
+        worldCopyJump: false,
+        crs: L.CRS.EPSG3857
+      });
+
+    var tile_layer_9719b4616bfb4d09897feb6944dc1140 = L.tileLayer(
+        'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}{r}.png',
+        {
+          "attribution": null,
+          "detectRetina": false,
+          "maxZoom": 19,
+          "minZoom": 1,
+          "noWrap": false,
+          "subdomains": "abc"
+        }).addTo(map_df49c5dbd0f84c3984517681c68d36f4);
+
+    // register functions for fab options
+    {% if tool_list %}
+      {% for tool in tool_list %}
+        var tool_{{ tool.id }} = document.getElementById('{{ tool.id }}');
+        tool_{{ tool.id }}.onmousedown = onClick{{ tool.id }};
+        function onClick{{ tool.id }}() {
+          console.log("onClick{{ tool.id }}")
+          coorx = (Math.random() * (42.37 - 42.41) + 42.41).toFixed(6)
+          coory = (Math.random() * (-72.51 + 72.53) - 72.53).toFixed(6)
+          var circle_marker_{{ tool.id }} = L.circleMarker(
+              [coorx,coory],
+              {
+                "bubblingMouseEvents": true,
+                "color": "#3186cc",
+                "dashArray": null,
+                "dashOffset": null,
+                "fill": true,
+                "fillColor": "#3186cc",
+                "fillOpacity": 0.2,
+                "fillRule": "evenodd",
+                "lineCap": "round",
+                "lineJoin": "round",
+                "opacity": 1.0,
+                "radius": 12,
+                "stroke": true,
+                "weight": 3
+                }).addTo(map_df49c5dbd0f84c3984517681c68d36f4);
+          }
+      {% endfor %}
+    {% endif %}
+
+</script>

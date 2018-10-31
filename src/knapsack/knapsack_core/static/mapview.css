@@ -117,6 +117,18 @@
               height: 40px;
             }
 
-            .icon-material_gen {
+            .icon-material_cs {
               background: url("img/book.png") center no-repeat;
+            }
+
+            .icon-material_et {
+              background: url("img/ambulance.png") center no-repeat;
+            }
+
+            .icon-material_dp {
+              background: url("img/elephant.png") center no-repeat;
+            }
+
+            .icon-material_cff {
+              background: url("img/bow-tie.png") center no-repeat;
             }
