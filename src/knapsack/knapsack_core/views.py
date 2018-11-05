@@ -1,7 +1,8 @@
-from knapsack_core.models import Question, Knapsack, Tool, ToolRequest, ToolVote
-from knapsack_core.models import User
+from knapsack_core.models import User, Question, Knapsack, Tool, ToolRequest, ToolVote
 from django.views import generic
 from django.shortcuts import render
+from django.template import Context, loader
+from django.http import HttpResponse
 
 # Create your views here.
 
@@ -32,13 +33,16 @@ def request_component(request):
     return render(request, 'request_component.html', context={
         'requests': requests
     })
-
+    
 class LibraryView(generic.TemplateView):
     template_name = 'library.html'
-
-    # We do not have user authentication yet, so just use the first test users'
-    # knapsack
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['knapsack'] = Knapsack.objects.first()
+        query = self.request.GET.get('q')
+        if query:
+            context['query'] = self.request.GET['q']
+        else:
+            context['query'] = ''
         return context
