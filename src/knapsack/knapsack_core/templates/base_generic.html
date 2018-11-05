@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
     crossorigin="anonymous">
+
   <!-- Add additional CSS in static file -->
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
@@ -26,17 +27,20 @@
     <li class="nav-item active">
       <a class="nav-link" href="{% url 'map' %}">Home <span class="sr-only">(current)</span></a>
     </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Dropdown
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="{% url 'index' %}">SignIn/SignUp</a>
-        <a class="dropdown-item" href="{% url 'map' %}">Client Area</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="{% url 'request' %}">Request</a>
-        <a class="dropdown-item" href="{% url 'library' %}">Store</a>
-      </div>
+    <li class="nav-item active">
+      <a class="nav-link" href="{% url 'index' %}">SignIn/SignUp </a>
+
+    </li>
+      <li class="nav-item active">
+      <a class="nav-link" href="{% url 'map' %}">Client Area </a>
+
+    </li>
+      <li class="nav-item active">
+      <a class="nav-link" href="{% url 'request' %}">Request </a>
+
+    </li>
+      <li class="nav-item active">
+      <a class="nav-link" href="{% url 'library' %}">Store </a>
     </li>
   </ul>
 

@@ -3,83 +3,57 @@
 <!-- We need to use load static for every template file so that Django knows
 where to find images -->
 {% load static %}
-
-{% block body %}
-	<div class='page-header'>
+{% block content %}
   {% if knapsack %}
     <h2>{{ knapsack.owner }}</h2>
   {% else %}
     <h2>Guest with no knapsack</h2>
   {% endif %}
-	</div>
-	<div class='page-header'>
   <h1>Knapsack Library</h1>
-	</div>
-	
   <!-- The searchbar doesn't do anything yet-->
-		<!--
+  <div>
     <input class='form-control' type='text' placeholder='Search'
     aria-label='Search'> </div>
-		-->
-
-	
-	<div class='row'>
-		<div class = 'col'>
-		<span class='search-container'>
-		<form action="{% url 'library' %}" method='get'>
-			<input type='text' name='q'>
-			<input type='submit' value ='Search'>
-		</form>
-		</span>
-		</div>
   <!-- The sort hyperlinks don't do anything yet-->
-		<div class = 'col text-right'>
-		  <span>
-		    Sort by: <a href='' id='alphabetical'>Alphabetical</a> / <a href='' id='date'>Date</a>
-			</span>
-		</div>
-	</div>
-	{% if query %}
-		<div>You searched for: {{ query }}</div>
-	{% endif %}
+  <h5 class='text-right mt-4'>
+    Sort by: <a href=''>Alphabetical</a> / <a href=''>Date</a>
+  </h5>
   <div class='album py-5 bg-light'>
     <div class='container'>
 
     {% if knapsack %}
       {% if knapsack.tools.count > 0 %}
         {% for tool in knapsack.tools.all %}
-					{% if tool.identifier|has_substring:query %}
-		        <!-- modulo is a custom filter defined in
-		        ../templatetags/knapsack_filters.py -->
-	          {% if forloop.counter|modulo:3 == 1 %}
-	            <div class='row'>
-	          {% endif %}
-	            <div class='col-md-4'>
-	              <div class='card mb-4'> 
-	                <!-- We use 'nofile.png' as the icon, but we may want to make the
-	                image src a context variable in the future -->
-	                <img class='card-img-top' src="{% static '/img/nofile.png' %}"
-	                max-height='100%' width='auto' alt='Image Here'>
-	                <div class='card-body'>
-	                  <p class='card-text'>{{ tool.identifier }}</p>
-	                  <div class='btn-group'>
-	                    <button type='button' 
-	                    class='btn btn-sm btn-outline-secondary'>Launch
-	                    </button>
-	                    <button type='button' 
-	                    class='btn btn-sm btn-outline-secondary'>Settings
-	                    </button>
-	                  </div>
-	                  <p>
-	                    <small class='text-muted'>{{ tool.description }}</small>
-	                  </p>
-	                </div>
-	              </div>
-	            </div>
-	          {% if forloop.last or forloop.counter|modulo:3 == 0 %}
-	            </div>
-	          {% endif %}
-					{% endif %}
+        <!-- modulo is a custom filter defined in
+        ../templatetags/knapsack_filters.py -->
+          {% if forloop.counter|modulo:3 == 1 %}
+            <div class='row'>
+          {% endif %}
+            <div class='col-md-4'>
+              <div class='card mb-4'>
+                <!-- We use 'nofile.png' as the icon, but we may want to make the
+                image src a context variable in the future -->
+                <img class='card-img-top' src="{% static '/img/nofile.png' %}"
+                max-height='100%' width='auto' alt='Image Here'>
+                <div class='card-body'>
+                  <p class='card-text'>{{ tool.identifier }}</p>
+                  <div class='btn-group'>
+                    <button type='button'
+                    class='btn btn-sm btn-outline-secondary'>Launch
+                    </button>
+                    <button type='button'
+                    class='btn btn-sm btn-outline-secondary'>Settings
+                    </button>
+                  </div>
+                  <p>
+                    <small class='text-muted'>{{ tool.description }}</small>
+                  </p>
+                </div>
+              </div>
+            </div>
+          {% if forloop.last or forloop.counter|modulo:3 == 0 %}
+            </div>
+          {% endif %}
         {% endfor %}
       {% else %}
         <div>There are no tools in your library.</div>
@@ -87,17 +61,5 @@ where to find images -->
     {% else %}
       <div>A knapsack wasn't created for you.</div>
     {% endif %}
-		</div>
   </div>
-{% endblock %}
-
-{% block script %}
-	<script
-	  src="https://code.jquery.com/jquery-3.3.1.js"
-	  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-	  crossorigin="anonymous">
-	</script>
-	<script
-		src="{% static '/js/library_sort.js' %}">
-	</script>
 {% endblock %}
