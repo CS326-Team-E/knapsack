@@ -21,7 +21,6 @@
     <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
     <style> #map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
     <style> #map_df49c5dbd0f84c3984517681c68d36f4 {
-
         z-index: 1;
         width : 100.0%;
         height: 100.0%;
@@ -57,6 +56,16 @@
       {% endif %}
       </ul>
     </div>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Tool Overview</p>
+      </div>
+
+    </div>
 {% endblock %}
 
 {% block script %}
@@ -89,10 +98,12 @@
       {% for tool in tool_list %}
         var tool_{{ tool.id }} = document.getElementById('{{ tool.id }}');
         tool_{{ tool.id }}.onmousedown = onClick{{ tool.id }};
+
         function onClick{{ tool.id }}() {
           console.log("onClick{{ tool.id }}")
           coorx = (Math.random() * (42.37 - 42.41) + 42.41).toFixed(6)
           coory = (Math.random() * (-72.51 + 72.53) - 72.53).toFixed(6)
+
           var circle_marker_{{ tool.id }} = L.circleMarker(
               [coorx,coory],
               {
@@ -109,9 +120,65 @@
                 "opacity": 1.0,
                 "radius": 12,
                 "stroke": true,
-                "weight": 3
-                }).addTo(map_df49c5dbd0f84c3984517681c68d36f4);
+                "weight": 3,
+                "popup": '{{ tool.identifier }}'
+              }
+            ).addTo(map_df49c5dbd0f84c3984517681c68d36f4);
+
+                function highlightFeature(e) {
+                    var layer = e.target;
+
+                    layer.setStyle({
+                        weight: 5,
+                        dashArray: '',
+                        fillOpacity: 0.7
+                    });
+
+                    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                        layer.bringToFront();
+                    }
+                  }
+
+                function resetFeature(e) {
+                    var layer = e.target;
+
+                    layer.setStyle({
+                        weight: 3,
+                        dashArray: '',
+                        fillOpacity: 0.2
+                    });
+
+                    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                        layer.bringToFront();
+                    }
+                  }
+
+                function Popdialog(e) {
+                  var modal = document.getElementById('myModal');
+                  // Get the <span> element that closes the modal
+                  var span = document.getElementsByClassName("close")[0];
+                  modal.style.display = "block";
+                  // document.getElementById("modal-content").innerHTML = "<p>Hello</p>";
+                  span.onclick = function() {
+                      modal.style.display = "none";
+                  }
+
+                  // When the user clicks anywhere outside of the modal, close it
+                  window.onclick = function(event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+              }
+
+                circle_marker_{{ tool.id }}.on({
+                    mouseover: highlightFeature,
+                    mouseout: resetFeature,
+                    click: Popdialog
+                });
           }
+
+
       {% endfor %}
     {% endif %}
 
