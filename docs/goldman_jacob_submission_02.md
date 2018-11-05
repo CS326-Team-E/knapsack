@@ -1,0 +1,5 @@
+I contributed to the project by implementing the ToolRequest and ToolVotes models, registering and generating data for those models, and developing the view for the request component page. A ToolRequest models a suggestion for a new tool. We wanted users to vote on the request they liked best, so I made the observation that instead of incrementing a counter integer bound to the request it would be better to create a model joining users and tool requests under a single vote.
+
+For each model I wrote code to register them in the administrative panel and also randomly generate samples. Creating the votes was especially interesting programmatically as I had to choose a pool of candidates and shrink it after every vote so as not to overlap. Luckily Python makes this trivial with the use of the random library.
+
+Lastly I implemented the view for the models discussed above. This was fairly trivial through the use of a for loop. A difficult component was effectively counting votes. I was able to solve this through counting the ToolVotes filtered by ID but would love to know a more effective solution.
