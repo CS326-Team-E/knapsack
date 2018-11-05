@@ -2,9 +2,6 @@
 {% extends 'base_generic.html' %}
 
   {% block head %}
-<head>
-    {% load static %}
-
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <script>L_PREFER_CANVAS = false; L_NO_TOUCH = false; L_DISABLE_3D = false;</script>
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.js"></script>
@@ -17,6 +14,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css" />
     <link rel="stylesheet" href="https://rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css" />
+
+    {% load static %}
     <link rel="stylesheet" href="{% static 'mapview.css' %}" />
 
     <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
@@ -30,11 +29,9 @@
         top: 0.0%;
         }
     </style>
-</head>
  {% endblock %}
 
 {% block body %}
-<body>
     <div class="folium-map" id="map_df49c5dbd0f84c3984517681c68d36f4" ></div>
     <div class="fab">
       <span class="fab-action-button">
@@ -60,7 +57,6 @@
       {% endif %}
       </ul>
     </div>
-</body>
 {% endblock %}
 
 {% block script %}
