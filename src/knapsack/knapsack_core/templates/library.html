@@ -8,101 +8,101 @@ where to find images
 
 {% block body %}
 <div class='container-fluid'>
-	<div class='page-header'>
+  <div class='page-header'>
   {% if knapsack %}
     <h2>{{ knapsack.owner }}</h2>
   {% else %}
     <h2>Guest with no knapsack</h2>
   {% endif %}
-	</div>
-	<div class='page-header'>
-  	<h1>Knapsack Library</h1>
-	</div>
+  </div>
+  <div class='page-header'>
+    <h1>Knapsack Library</h1>
+  </div>
 
-	<div class='row'>
-		<!-- The searchbar -->
-		<div class = 'col'>
-			<span class='search-container'>
-				<form action="{% url 'library' %}" method='get'>
-					<input type='text' name='q'>
-					<input type='submit' value ='Search'>
-				</form>
-			</span>
-		</div>
-  	<!-- The sort hyperlinks don't do anything yet-->
-		<div class = 'col text-right'>
-		  <span>
+  <div class='row'>
+    <!-- The searchbar -->
+    <div class = 'col'>
+      <span class='search-container'>
+        <form action="{% url 'library' %}" method='get'>
+          <input type='text' name='q'>
+          <input type='submit' value ='Search'>
+        </form>
+      </span>
+    </div>
+    <!-- The sort hyperlinks don't do anything yet-->
+    <div class = 'col text-right'>
+      <span>
         Sort by: <a href='' id='alphabetical'>Alphabetical</a> / 
         <a href='' id='date'>Date</a>
-			</span>
-		</div>
-	</div>
-	
-	{% if query %}
-	<div>You searched for: {{ query }}</div>
-	{% endif %}
-	
+      </span>
+    </div>
+  </div>
+  
+  {% if query %}
+  <div>You searched for: {{ query }}</div>
+  {% endif %}
+  
   {% if knapsack %}
-	<!-- Beginning the album -->
-	<div class='album py-5 bg-light'>
-		<div class='container'>
-			<!-- 
+  <!-- Beginning the album -->
+  <div class='album py-5 bg-light'>
+    <div class='container'>
+      <!-- 
       This is an example knapsack tool, on its own row. It hasn't actually been
       added to the user's knapsack in the database. This shows up even if the
       test user has no tools in the knapsack.
-			-->
-			<div class='row'>
-			  <div class='col-md-4'>
-			    <div class='card mb-4'> 
-			      <img class='card-img-top' 
+      -->
+      <div class='row'>
+        <div class='col-md-4'>
+          <div class='card mb-4'> 
+            <img class='card-img-top' 
             src="{% static '/img/component_scheduler_icon.png' %}"
-			      max-height='100%' width='auto' alt='Image Here'>
-			      <div class='card-body'>
-			        <p class='card-text'>Example Tool</p>
-			        <div class='btn-group'>
-								<a href="{% url 'single_component' %}"
-								class='btn btn-sm btn-outline-secondary'>Launch
-								</a>
-								<a href="" class='btn btn-sm btn-outline-secondary'>Settings
-								</a>
-			        </div>
-			        <p>
-			          <small class='text-muted'>Description here</small>
-			        </p>
-			      </div>
-			    </div>
-			  </div>
-			</div>
-			
-  	{% if knapsack.tools.count > 0 %}
-    	{% for tool in knapsack.tools.all %}
-				{% if tool.identifier|has_substring:query %}
-	        <!-- 
-					modulo is a custom filter defined in
-	        ../templatetags/knapsack_filters.py.
+            max-height='100%' width='auto' alt='Image Here'>
+            <div class='card-body'>
+              <p class='card-text'>Example Tool</p>
+              <div class='btn-group'>
+                <a href="{% url 'single_component' %}"
+                class='btn btn-sm btn-outline-secondary'>Launch
+                </a>
+                <a href="" class='btn btn-sm btn-outline-secondary'>Settings
+                </a>
+              </div>
+              <p>
+                <small class='text-muted'>Description here</small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    {% if knapsack.tools.count > 0 %}
+      {% for tool in knapsack.tools.all %}
+        {% if tool.identifier|has_substring:query %}
+          <!-- 
+          modulo is a custom filter defined in
+          ../templatetags/knapsack_filters.py.
           If the current tool count mod 3 is 1, then we start a new row so that
           each row has at most 3 tools.
-					-->
+          -->
           {% if forloop.counter|modulo:3 == 1 %}
       <div class='row'>
-        	{% endif %}
-	
+          {% endif %}
+  
         <div class='col-md-4'>
           <div class='card mb-4'> 
             <!-- 
             We use 'nofile.png' as the icon for the fake tools, but we may want
             to make the image src a context variable in the future.
-						-->
+            -->
             <img class='card-img-top' src="{% static '/img/nofile.png' %}"
             max-height='100%' width='auto' alt='Image Here'>
             <div class='card-body'>
               <p class='card-text'>{{ tool.identifier }}</p>
               <div class='btn-group'>
-								<a href="{% url 'single_component' %}"
-								class='btn btn-sm btn-outline-secondary'>Launch
-								</a>
-								<a href="" class='btn btn-sm btn-outline-secondary'>Settings
-								</a>
+                <a href="{% url 'single_component' %}"
+                class='btn btn-sm btn-outline-secondary'>Launch
+                </a>
+                <a href="" class='btn btn-sm btn-outline-secondary'>Settings
+                </a>
               </div>
               <p>
                 <small class='text-muted'>{{ tool.description }}</small>
@@ -110,22 +110,22 @@ where to find images
             </div>
           </div>
         </div>
-					<!--
+          <!--
           If the current tool is the last tool or the current tool count mod 3
           is 0, end the row.
-					-->
-        	{% if forloop.last or forloop.counter|modulo:3 == 0 %}
+          -->
+          {% if forloop.last or forloop.counter|modulo:3 == 0 %}
       </div>
-        	{% endif %}
-				{% endif %}
-    	{% endfor %}
-		<!-- Ending the album-->
-		</div>
-	</div>
-  	{% else %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    <!-- Ending the album-->
+    </div>
+  </div>
+    {% else %}
   <div>There are no tools in your library.</div>
-  	{% endif %}
-	{% else %}
+    {% endif %}
+  {% else %}
   <div>A knapsack wasn't created for you.</div>
   {% endif %}
 </div>
@@ -133,12 +133,12 @@ where to find images
 
 {% block script %}
   <!-- I plan to use JQuery to implement sorting of the tools -->
-	<script
-	  src="https://code.jquery.com/jquery-3.3.1.js"
-	  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-	  crossorigin="anonymous">
-	</script>
-	<script
-		src="{% static '/js/library_sort.js' %}">
-	</script>
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+  </script>
+  <script
+    src="{% static '/js/library_sort.js' %}">
+  </script>
 {% endblock %}
