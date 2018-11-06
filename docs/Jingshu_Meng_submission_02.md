@@ -2,4 +2,4 @@ I contributed to this project by implementing the base template that has a navig
 
 In addition, I extended map.html from the base template.
 
-Lastly, I gave the video presentation. I made the slides and did the recording and video editing. My teammates helped with proofreading and gave valuable advices. 
+Lastly, I presented in the video to talk about the data model diagram. Jacob and William helped with the rest.
