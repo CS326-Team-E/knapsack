@@ -28,15 +28,15 @@ our welcome page has a logic for displaying different information based on user
 authentication, although registration is not yet implemented.
 
 # Problems/Successes
-* Problems 
-* Getting different components to work together (ex. Dropdown
-nav only worked on one page)
-* Making use of the time available instead of cramming towards due date
-* Learning Django's templating language
-* Coordinating a singular vision of the finished product
+- Problems 
+  * Getting different components to work together (ex. Dropdown
+  nav only worked on one page)
+  * Making use of the time available instead of cramming towards due date
+  * Learning Django's templating language
+  * Coordinating a singular vision of the finished product
 
-* Successes
-* Great implementation of the data model: extensible and well designed
-* Once we mastered templating, we effectively created the views we needed
-* Good communication when together
+- Successes
+  * Great implementation of the data model: extensible and well designed
+  * Once we mastered templating, we effectively created the views we needed
+  * Good communication when together
 
