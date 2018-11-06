@@ -15,6 +15,7 @@ we will achieve this feature soon.
 * Jacob Goldman
 
 # Video Link
+[YouTube](https://www.youtube.com/watch?v=QjA7zlofZfs)
 
 # Design Overview
 Our application centers around three core models: Users, Knapsacks, and Tools. A
