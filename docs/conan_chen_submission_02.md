@@ -16,4 +16,5 @@ templating language and Bootstrap. I also implemented a searchbar for this page
 and added an example tool (just on the frontend) which, through the launch
 button on its Bootstrap card, links to a page for that tool. Jacob had written
 the html page for this before, so I turned it into a Django template which extends
-our base template.
+our base template. For these pages I wrote the necessary view functions and
+urls.
