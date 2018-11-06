@@ -51,3 +51,7 @@ class LibraryView(generic.TemplateView):
         else:
             context['query'] = ''
         return context
+
+def single_component(request):
+    return render(request, 'single_component.html', context={})
+    
