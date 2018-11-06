@@ -69,7 +69,10 @@ where to find images
                 </a>
               </div>
               <p>
-                <small class='text-muted'>Click on the launch button to go to the page for this tool.</small>
+                <small class='text-muted'>
+                Click on the launch button to go to the page for this
+                tool.
+                </small>
               </p>
             </div>
           </div>
@@ -79,9 +82,13 @@ where to find images
       
     {% if knapsack.tools.count > 0 %}
       {% for tool in knapsack.tools.all %}
+        <!--
+        has_substring is a custom filter defined in
+        ../templatetags/knapsack_filters.py
+        -->
         {% if tool.identifier|has_substring:query %}
           <!-- 
-          modulo is a custom filter defined in
+          modulo is another custom filter defined in
           ../templatetags/knapsack_filters.py.
           If the current tool count mod 3 is 1, then we start a new row so that
           each row has at most 3 tools.
