@@ -51,6 +51,7 @@ where to find images
       added to the user's knapsack in the database. This shows up even if the
       test user has no tools in the knapsack.
       -->
+      {% if 'Example Tool'|has_substring:query %}
       <div class='row'>
         <div class='col-md-4'>
           <div class='card mb-4'> 
@@ -63,16 +64,18 @@ where to find images
                 <a href="{% url 'single_component' %}"
                 class='btn btn-sm btn-outline-secondary'>Launch
                 </a>
+                <!-- The Settings button doesn't do anything yet. -->
                 <a href="" class='btn btn-sm btn-outline-secondary'>Settings
                 </a>
               </div>
               <p>
-                <small class='text-muted'>Description here</small>
+                <small class='text-muted'>Click on the launch button to go to the page for this tool.</small>
               </p>
             </div>
           </div>
         </div>
       </div>
+      {% endif %}
       
     {% if knapsack.tools.count > 0 %}
       {% for tool in knapsack.tools.all %}
@@ -98,7 +101,11 @@ where to find images
             <div class='card-body'>
               <p class='card-text'>{{ tool.identifier }}</p>
               <div class='btn-group'>
-                <a href="{% url 'single_component' %}"
+                <!-- 
+                For the fake tools, the Launch and Settings buttons don't do
+                anything yet. 
+                -->
+                <a href=""
                 class='btn btn-sm btn-outline-secondary'>Launch
                 </a>
                 <a href="" class='btn btn-sm btn-outline-secondary'>Settings
