@@ -2,10 +2,8 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import User as BuiltinUser
-
-
-class MirroredUser(BuiltinUser):
-    pass
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 # Create your models here.
@@ -16,7 +14,18 @@ class User(AbstractBaseUser):
     identifier = models.CharField(max_length=40, unique=True)
     user_knapsack = models.ForeignKey(
         'Knapsack', on_delete=models.SET_NULL, null=True)
+    mirrored_user = models.OneToOneField(
+        BuiltinUser, on_delete=models.CASCADE)
     USERNAME_FIELD = 'identifier'
+
+    @receiver(post_save, sender=BuiltinUser)
+    def create_user_user(sender, instance, created, **kwargs):
+        if created:
+            User.objects.create(user=instance)
+
+    @receiver(post_save, sender=BuiltinUser)
+    def save_user_user(sender, instance, **kwargs):
+        instance.user.save()
 
     class Meta:
         ordering = ["identifier"]
