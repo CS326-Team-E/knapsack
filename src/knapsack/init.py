@@ -7,6 +7,8 @@ import random
 from knapsack_core.models import User, Question, Knapsack
 from knapsack_core.models import Tool, ToolRequest, ToolVote
 
+from django.contrib.auth.base_user import AbstractBaseUser
+
 fake = Faker()
 
 # Create Users
@@ -24,6 +26,10 @@ for i in range(0, 50):
     user.save()
     users.append(user)
 
+test_username="bigbro"
+test_email="bigbro@email.com"
+test_password ="bigbro"
+user = DjangoUser.objects.create_user(test_username, test_email, test_password)
 a_identifier = "bigbro@email.com"
 a_password = "bigbro"
 a_last_login = fake.date_time_this_month(
