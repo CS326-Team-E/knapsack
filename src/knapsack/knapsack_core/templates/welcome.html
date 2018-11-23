@@ -14,7 +14,7 @@
           empower your campus experience by giving you access to several useful tools.</h2>
           {% if not user.is_authenticated %}
             <a href="{% url 'login' %}" class="btn btn-primary js-scroll-trigger">Sign In</a>
-            <a href="#signup" class="btn btn-primary js-scroll-trigger">Sign Up</a>
+            <a href="{% url 'signup' %}" class="btn btn-primary js-scroll-trigger">Sign Up</a>
           {% else %}
             <a href="{% url 'map' %}" class="btn btn-primary">Home</a>
           {% endif %}
@@ -22,54 +22,6 @@
     </div>
   </header>
 
-  {% if user.is_authenticated %}
-  <!-- Footer -->
-  {% else %}
-
-  <!-- Sign Up Section -->
-  <section id="signup" style="padding: 5rem">
-    <div class="container">
-      <a name="signup"></a>
-      <!-- Sign In Section -->
-      <div class="row align-items-center no-gutters mb-4 mb-lg-5">
-        <!-- Left column-->
-        <div class="col-xl-4 col-lg-5">
-          <div class="featured-text text-center text-lg-left">
-            <h4 class="text-black-50">Sign Up</h4>
-            <form action="{% url 'library' %}" method="POST">
-              <div class="form-group">
-                <label for="exampleInputEmail1" class="text-black-50">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                  placeholder="Enter Your Email">
-              </div>
-              <div class="form-group">
-                  <label for="exampleInputEmail1" class="text-black-50">Username</label>
-                  <input type="email" class="form-control" id="username" placeholder="Enter Your Username">
-                </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1" class="text-black-50">Password</label>
-                <input type="password" class="form-control" name="password" id="password" placeholder="Enter Your Password">
-              </div>
-              <div class="form-group">
-                  <label for="exampleInputPassword1" class="text-black-50">Confirm assword</label>
-                  <input type="password" class="form-control" name="password_comfirm" id="password_confirm" placeholder="Comfirm Your Password">
-                </div>
-              <div class="form-check">
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </div>
-            </form>
-          </div>
-        </div>
-        <!-- Right Column -->
-        <div style="padding-left: 2rem" class="col-xl-8 col-lg-7">
-            <img class="img-fluid mb-3 mb-lg-0" src="{% static 'img/logo_2.jpg' %}" alt="">
-        </div>
-
-      </div>
-  </section>
-
-  
-  {% endif %}
   <!-- Custom scripts for this template -->
   <!-- Footer -->
   <footer class="bg-black small text-center text-white-50" style="padding: 5rem 0;">
