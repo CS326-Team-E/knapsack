@@ -21,7 +21,7 @@ class User(AbstractBaseUser):
     @receiver(post_save, sender=BuiltinUser)
     def create_user_user(sender, instance, created, **kwargs):
         if created:
-            User.objects.create(user=instance)
+            User.objects.create(mirrored_user=instance, identifier=instance.username)
 
     @receiver(post_save, sender=BuiltinUser)
     def save_user_user(sender, instance, **kwargs):
