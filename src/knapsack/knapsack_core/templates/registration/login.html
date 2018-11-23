@@ -1,0 +1,51 @@
+{% extends 'base_generic.html' %}
+{% load static %}
+{% block head %}
+  <link href="{% static 'welcome.css' %}"  rel="stylesheet">
+{% endblock %}
+{% block body %}
+  {% if user.is_authenticated %}
+  <!-- Footer -->
+  <footer class="bg-black small text-center text-white-50" style="padding: 5rem 0;">
+    <div class="container">
+      Copyright &copy; HOBOS 2018
+    </div>
+  </footer>
+  {% else %}
+  <!-- Login Section -->
+  <section id="signin" style="padding: 5rem">
+    <div class="container">
+      <a name="signin"></a>
+      <!-- Sign In Section -->
+      <div class="row align-items-center no-gutters mb-4 mb-lg-5">
+        <!-- Left column-->
+        <div class="col-xl-8 col-lg-7">
+          <img class="img-fluid mb-3 mb-lg-0" src="{% static 'img/logo_1.jpg' %}" alt="">
+        </div>
+        <!-- Right Column -->
+        <div style="padding: 0 0 0 2rem" class="col-xl-4 col-lg-5">
+          <div class="featured-text text-center text-lg-left">
+            <h4 class="text-black-50">Sign In</h4>
+            <form action="{% url 'login' %}" method="POST">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <div class="form-check">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black small text-center text-white-50" style="padding: 5rem 0;">
+    <div class="container">
+      Copyright &copy; HOBOS 2018
+    </div>
+  </footer>
+  {% endif %}
+  <!-- Custom scripts for this template -->
+  <script src="{% static 'welcome.js' %}"></script>
+
+{% endblock %}

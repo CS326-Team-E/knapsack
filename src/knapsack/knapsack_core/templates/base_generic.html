@@ -40,10 +40,6 @@
     <li class="nav-item active">
       <a class="nav-link" href="{% url 'map' %}">Home <span class="sr-only">(current)</span></a>
     </li>
-    <li class="nav-item active">
-      <a class="nav-link" href="{% url 'index' %}">SignIn/SignUp </a>
-
-    </li>
       <li class="nav-item active">
       <a class="nav-link" href="{% url 'map' %}">Client Area </a>
 
@@ -55,6 +51,18 @@
       <li class="nav-item active">
       <a class="nav-link" href="{% url 'library' %}">Store </a>
     </li>
+    {% if user.is_authenticated %}
+    <li class="nav-item active">
+      <a class="nav-link" href="{% url 'logout' %}">Logout </a>
+    </li>
+    {% else %}
+    <li class="nav-item active">
+      <a class="nav-link" href="{% url 'login' %}">Sign In</a>
+    </li>
+    <li class="nav-item active">
+      <a href="#signup" class="nav-link js-scroll-trigger">Sign Up</a>
+    </li>
+    {% endif %}
   </ul>
 
 </div>
