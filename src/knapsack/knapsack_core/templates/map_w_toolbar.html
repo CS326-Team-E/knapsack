@@ -52,13 +52,12 @@
         </li>
         {% endfor %}
 
-      {% else %}
+      {% endif %}
         <li class="fab-buttons__item">
-          <a href="#" class="fab-buttons__link" id='no_tool' data-tooltip="Click to add tools">
+          <a href="{% url 'library' %}" class="fab-buttons__link" id='no_tool' data-tooltip="Click to add tools">
             <i class="icon-material icon-material_gen"></i>
           </a>
         </li>
-      {% endif %}
       </ul>
     </div>
     <!-- The Modal -->
