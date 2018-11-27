@@ -15,7 +15,8 @@ fake = Faker()
 new_group, created = Group.objects.get_or_create(name='users')
 # Create Users
 users = []
-for i in range(0, 50):
+print("Users")
+for i in range(0, 20):
     a_identifier = fake.safe_email()
     a_password = fake.password()
     a_last_login = fake.date_time_this_month(
@@ -43,6 +44,7 @@ user = DjangoUser.objects.create_user(a_identifier, a_identifier, a_password)
 users.append(User.objects.get(mirrored_user=user))
 
 # Create Questions
+print("Questions")
 questions = []
 for user in users:
     # Generate a random number of questions for each user
@@ -58,6 +60,7 @@ for user in users:
 
 # Create Tools
 tools = []
+print("Tools")
 for i in range(0, 10):
     a_identifier = fake.text(40)
     a_description = fake.text(200)
@@ -86,11 +89,12 @@ for i in range(0, 10):
 
 # Create Knapsacks
 knapsacks = []
+print("Knapsacks")
 for user in users:
     knapsack = Knapsack(owner=user)
     knapsack.save()
     # Add a random number of tools
-    random_max = fake.random_int(0, len(tools))
+    random_max = fake.random_int(3, len(tools))
     for i in range(0, random_max):
         knapsack.tools.add(tools[fake.random_int(0, len(tools)) - 1])
     knapsacks.append(knapsack)
@@ -101,6 +105,7 @@ for knapsack in knapsacks:
     user.save()
 
 # Create ToolRequests
+print("Requests")
 toolrequests = []
 for i in range(0, 5):
     tr = ToolRequest(username=random.choice(users))
@@ -110,6 +115,7 @@ for i in range(0, 5):
     toolrequests.append(tr)
 
 # Create votes
+print("Votes")
 for tr in toolrequests:
     available_users = users.copy()
     for i in range(0, random.randint(5, 25)):
