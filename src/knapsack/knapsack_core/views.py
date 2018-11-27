@@ -26,6 +26,7 @@ class MapView(generic.TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['current_tool'] = ""
         if self.request.user.is_authenticated:
             userknap = Knapsack.objects.filter(owner__identifier=self.request.user.email).first()
             print(userknap.tools.all())

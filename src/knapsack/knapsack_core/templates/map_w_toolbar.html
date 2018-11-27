@@ -34,7 +34,7 @@
     {% if user.is_authenticated %}
       <p>Logged in as User: {{ user.get_username }}</p>
     {% else %}
-      <p>Not logged in.</p>  
+      <p>Not logged in.</p>
     {% endif %}
     <div class="folium-map" id="map_df49c5dbd0f84c3984517681c68d36f4" ></div>
     <div class="fab">
@@ -67,7 +67,13 @@
       <!-- Modal content -->
       <div class="modal-content">
         <span class="close">&times;</span>
-        <p>Tool Overview</p>
+        <label id="tool_name">Tool Name</label>
+        <!-- {% if current_tool %}
+          {{ current_tool }}
+        {% else %}
+          <p>No tool specified</p>
+        {% endif %} -->
+        <div id="toolhtml"></div>
       </div>
 
     </div>
@@ -106,8 +112,8 @@
 
         function onClick{{ tool.id }}() {
           console.log("onClick{{ tool.id }}")
-          coorx = (Math.random() * (42.37 - 42.41) + 42.41).toFixed(6)
-          coory = (Math.random() * (-72.51 + 72.53) - 72.53).toFixed(6)
+          coorx = {{ tool.location_x }}
+          coory = {{ tool.location_y }}
 
           var circle_marker_{{ tool.id }} = L.circleMarker(
               [coorx,coory],
@@ -162,6 +168,16 @@
                   var modal = document.getElementById('myModal');
                   // Get the <span> element that closes the modal
                   var span = document.getElementsByClassName("close")[0];
+                  document.getElementById('tool_name').innerHTML = '{{ tool.identifier }}';
+                  htmltool = `
+                  {{ tool.html }}
+                  `;
+                  htmltool.trim();
+                  var textArea = document.createElement('textarea');
+                  textArea.innerHTML = htmltool;
+                  decodedString = textArea.value;
+                  console.log(decodedString)
+                  document.getElementById('toolhtml').innerHTML = decodedString;
                   modal.style.display = "block";
                   // document.getElementById("modal-content").innerHTML = "<p>Hello</p>";
                   span.onclick = function() {
