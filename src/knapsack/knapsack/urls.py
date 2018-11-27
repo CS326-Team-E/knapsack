@@ -25,7 +25,7 @@ urlpatterns = [
 ]
 
 urlpatterns += [
-  path('knapsack_core/', include('knapsack_core.urls')),
+  path('', include('knapsack_core.urls')),
 ]
 
 urlpatterns += [
