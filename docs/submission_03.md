@@ -38,5 +38,8 @@ User model
 * Success: learning the right query to use to get a user's knapsack and
 * then display the knapsack tools as part of a customized view
 
-
 # Team Choice
+For the final submission, we would like to create at least one new Knapsack
+tool and connect it to the library/store page. Another task we would like
+to complete is implementing sorting functionality for the library/store and
+divide the library section from the store section.
