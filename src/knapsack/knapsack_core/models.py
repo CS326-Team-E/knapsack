@@ -53,8 +53,10 @@ class Tool(models.Model):
     # )
 
     identifier = models.CharField(max_length=40, unique=True)
-    path = models.CharField(max_length=40)
-    description = models.TextField()
+    html = models.TextField(default='Component missing')
+    location_x = models.FloatField(default=42.389)
+    location_y = models.FloatField(default=-72.529)
+    description = models.TextField(null=True)
 
     def __str__(self):
         return self.identifier

@@ -8,7 +8,6 @@ from knapsack_core.models import User, Question, Knapsack
 from knapsack_core.models import Tool, ToolRequest, ToolVote
 
 from django.contrib.auth.base_user import AbstractBaseUser
-
 fake = Faker()
 
 # Create Users
@@ -56,10 +55,27 @@ for user in users:
 tools = []
 for i in range(0, 10):
     a_identifier = fake.text(40)
-    a_path = fake.uri_path(deep=3)
     a_description = fake.text(200)
-    tool = Tool(identifier=a_identifier, path=a_path,
-                description=a_description)
+    lead = fake.text(75)
+    a_html = f"""
+        <div class="py-5 bg-light component">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4">
+						<h2 class="text-center mt-2">{a_identifier}</h2>
+					</div>
+					<div class="col-md-8 pl-5">
+						<p class="lead">{lead}</p>
+						<p>{a_description}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+    """
+    coorx = random.uniform(42.37, 42.47)
+    coory = random.uniform(-72.53,-72.51)
+    tool = Tool(identifier=a_identifier, html=a_html,
+                description=a_description, location_x=coorx, location_y=coory)
     tool.save()
     tools.append(tool)
 
