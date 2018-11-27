@@ -123,7 +123,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-LOGIN_URL =  '/knapsacp_core/login'
+LOGIN_URL =  '/accounts/login'
 
 LOGIN_REDIRECT_URL = '/'
 
