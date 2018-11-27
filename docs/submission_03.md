@@ -30,5 +30,13 @@ views by accessing the user instance associated with the request and
 performing queries on the database.
 
 # Problems/Successes
+* Problem: deciding how to add login/logout functionality to our existing
+User model
+* Success: creating a one-to-one mapping between our existing User model
+* and Django's built-in user model
+* Problem: figuring out how to customized views for an authenticated user
+* Success: learning the right query to use to get a user's knapsack and
+* then display the knapsack tools as part of a customized view
+
 
 # Team Choice
