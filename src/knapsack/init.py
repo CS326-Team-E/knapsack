@@ -8,8 +8,11 @@ from knapsack_core.models import User, Question, Knapsack
 from knapsack_core.models import Tool, ToolRequest, ToolVote
 
 from django.contrib.auth.base_user import AbstractBaseUser
+from django.contrib.auth.models import Group
 fake = Faker()
 
+# Create user Group
+new_group, created = Group.objects.get_or_create(name='user')
 # Create Users
 users = []
 for i in range(0, 50):
@@ -21,6 +24,8 @@ for i in range(0, 50):
         tzinfo=timezone.get_default_timezone()
     )
     djangoUser = DjangoUser.objects.create_user(a_identifier, a_identifier, a_password)
+    group = Group.objects.get(name='user')
+    djangoUser.groups.add(group)
     users.append(User.objects.get(mirrored_user=djangoUser))
 
 test_username="bigbro"
