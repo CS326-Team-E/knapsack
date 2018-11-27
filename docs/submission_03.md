@@ -1,4 +1,10 @@
 # Overview
+Knapsack is a platform that provides college students modular applications
+that will improve their campus experience, called "knapsack tools". As more
+tools get developed, knapsack users will be able to add more knapsack tools
+to their collection, i.e. their knapsack. Knapsack users will also be able
+to submit suggestions for new knapsack tools which the community can then
+vote on.
 
 # Team Members
 * Jingshu Meng
