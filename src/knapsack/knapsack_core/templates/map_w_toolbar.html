@@ -3,7 +3,7 @@
 
   {% block head %}
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <script>L_PREFER_CANVAS = false; L_NO_TOUCH = false; L_DISABLE_3D = false;</script>
+    <!-- <script>L_PREFER_CANVAS = false; L_NO_TOUCH = false; L_DISABLE_3D = false;</script> -->
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -31,6 +31,11 @@
  {% endblock %}
 
 {% block body %}
+    {% if user.is_authenticated %}
+      <p>Logged in as User: {{ user.get_username }}</p>
+    {% else %}
+      <p>Not logged in.</p>  
+    {% endif %}
     <div class="folium-map" id="map_df49c5dbd0f84c3984517681c68d36f4" ></div>
     <div class="fab">
       <span class="fab-action-button">

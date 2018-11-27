@@ -14,19 +14,26 @@ def index(request):
     # Use the welcome.html page for now
     return render(request, 'welcome.html', context={})
 
+
 class SignUp(generic.CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy('login')
     template_name = 'registration/signup.html'
 
+
 class MapView(generic.TemplateView):
     template_name = "map_w_toolbar.html"
 
     def get_context_data(self, **kwargs):
-
         context = super().get_context_data(**kwargs)
-        context['tool_list'] = Tool.objects.all()
-        print(len(Tool.objects.all()))
+        if self.request.user.is_authenticated:
+            userknap = Knapsack.objects.filter(owner__identifier=self.request.user.email).first()
+            print(userknap.tools.all())
+            context['tool_list'] = userknap.tools.all()
+        else:
+            pass
+        # context['tool_list'] = Knapsack.objects.all()
+        # print(len(Tool.objects.all()))
         return context
 
 
@@ -51,7 +58,7 @@ def request_component(request):
 class LibraryView(LoginRequiredMixin, generic.TemplateView):
     redirect_field_name = ''
     template_name = 'library.html'
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['knapsack'] = Knapsack.objects.filter(owner__identifier=self.request.user.email).first()
@@ -62,8 +69,10 @@ class LibraryView(LoginRequiredMixin, generic.TemplateView):
             context['query'] = ''
         return context
 
+
 def single_component(request):
     return render(request, 'single_component.html', context={})
+
 
 def vote_component(request, request_id):
     tr = get_object_or_404(ToolRequest, id=request_id)
@@ -74,11 +83,14 @@ def vote_component(request, request_id):
         ToolVote.objects.create(username=user, request=tr)
     return redirect('request')
 
+
 def new_component(request):
     print(request.POST)
     user = get_object_or_404(User, id=request.user.id)
-    ToolRequest.objects.create(username=user, title=request.POST.get('title', ''), request=request.POST.get('description', ''))
+    ToolRequest.objects.create(username=user, title=request.POST.get(
+        'title', ''), request=request.POST.get('description', ''))
     return redirect('request')
+
 
 def remove_component(request, request_id):
     tr = get_object_or_404(ToolRequest, id=request_id)
