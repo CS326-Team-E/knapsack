@@ -16,7 +16,7 @@ new_group, created = Group.objects.get_or_create(name='users')
 # Create Users
 users = []
 print("Users")
-for i in range(0, 20):
+for i in range(0, 50):
     a_identifier = fake.safe_email()
     a_password = fake.password()
     a_last_login = fake.date_time_this_month(
