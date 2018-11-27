@@ -4,7 +4,11 @@ from knapsack_core import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('map/', views.MapView.as_view(), name='map'),
-    path('request/', views.request_component, name='request'),
     path('library/', views.LibraryView.as_view(), name='library'),
     path('example/', views.single_component, name='single_component'),
+    path('request/', views.request_component, name='request'),
+    path('request/vote/<int:request_id>', views.vote_component, name='vote'),
+    path('request/new', views.new_component, name='new'),
+    path('request/remove/<int:request_id>', views.remove_component, name='remove'),
+
 ]
