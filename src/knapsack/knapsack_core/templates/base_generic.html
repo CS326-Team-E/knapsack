@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   {% block title %}<title>Knapsack</title>{% endblock %}
   <!-- Required meta tags-->
@@ -22,46 +23,55 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
     rel="stylesheet">
 
-  <link href="{% static 'navigation.css' %}"  rel="stylesheet">
+  <link href="{% static 'navigation.css' %}" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
   {% block head %}{% endblock %}
 </head>
 
 <body>
-    <!-- Static navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-<a class="navbar-brand" href="#">Knapsack</a>
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-</button>
+  <!-- Static navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="font-family:'Nunito'; letter-spacing: 0.0625em; font-size: 1rem; font-weight: 400; line-height: 1.5;">
+    <a class="navbar-brand" href="#">Knapsack</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-<div class="collapse navbar-collapse" id="navbarSupportedContent">
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item active">
-      <a class="nav-link" href="{% url 'map' %}">Home <span class="sr-only">(current)</span></a>
-    </li>
-    <li class="nav-item active">
-      <a class="nav-link" href="{% url 'index' %}">SignIn/SignUp </a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'map' %}">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'map' %}">Client Area </a>
 
-    </li>
-      <li class="nav-item active">
-      <a class="nav-link" href="{% url 'map' %}">Client Area </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'request' %}">Request </a>
 
-    </li>
-      <li class="nav-item active">
-      <a class="nav-link" href="{% url 'request' %}">Request </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'library' %}">Store </a>
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'logout' %}">Logout </a>
+        </li>
+        {% else %}
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'login' %}">Sign In</a>
+        </li>
+        <li class="nav-item active">
+          <a href="{% url 'signup' %}" class="nav-link js-scroll-trigger">Sign Up</a>
+        </li>
+        {% endif %}
+      </ul>
 
-    </li>
-      <li class="nav-item active">
-      <a class="nav-link" href="{% url 'library' %}">Store </a>
-    </li>
-  </ul>
+    </div>
+  </nav>
 
-</div>
-</nav>
-
-{% block body %}{% endblock %}
-{% block script %}{% endblock %}
+  {% block body %}{% endblock %}
+  {% block script %}{% endblock %}
 
 
 </body>

@@ -1,8 +1,10 @@
 from knapsack_core.models import User, Question, Knapsack, Tool, ToolRequest, ToolVote
+from django.contrib.auth.forms import UserCreationForm
 from django.views import generic
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template import Context, loader
 from django.http import HttpResponse
+from django.urls import reverse_lazy
 
 # Create your views here.
 
@@ -11,6 +13,10 @@ def index(request):
     # Use the welcome.html page for now
     return render(request, 'welcome.html', context={})
 
+class SignUp(generic.CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = 'registration/signup.html'
 
 class MapView(generic.TemplateView):
     template_name = "map_w_toolbar.html"
