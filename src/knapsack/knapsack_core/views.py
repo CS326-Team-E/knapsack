@@ -29,8 +29,9 @@ class MapView(generic.TemplateView):
         context['current_tool'] = ""
         if self.request.user.is_authenticated:
             userknap = Knapsack.objects.filter(owner__identifier=self.request.user.email).first()
-            print(userknap.tools.all())
-            context['tool_list'] = userknap.tools.all()
+            if userknap:
+                # print(userknap.tools.all())
+                context['tool_list'] = userknap.tools.all()
         else:
             pass
         # context['tool_list'] = Knapsack.objects.all()
