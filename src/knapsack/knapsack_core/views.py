@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.template import Context, loader
 from django.http import HttpResponse
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
@@ -46,13 +47,14 @@ def request_component(request):
   return render(request, 'request_component.html', context={
     'requests': requests
   })
-  
-class LibraryView(generic.TemplateView):
+
+class LibraryView(LoginRequiredMixin, generic.TemplateView):
+    redirect_field_name = ''
     template_name = 'library.html'
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['knapsack'] = Knapsack.objects.first()
+        context['knapsack'] = Knapsack.objects.filter(owner__identifier=self.request.user.email).first()
         query = self.request.GET.get('q')
         if query:
             context['query'] = self.request.GET['q']
