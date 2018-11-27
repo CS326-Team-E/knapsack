@@ -31,6 +31,11 @@
  {% endblock %}
 
 {% block body %}
+    {% if user.is_authenticated %}
+      <p>Logged in as User: {{ user.get_username }}</p>
+    {% else %}
+      <p>Not logged in.</p>  
+    {% endif %}
     <div class="folium-map" id="map_df49c5dbd0f84c3984517681c68d36f4" ></div>
     <div class="fab">
       <span class="fab-action-button">
