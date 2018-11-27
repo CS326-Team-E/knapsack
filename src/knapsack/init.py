@@ -21,10 +21,8 @@ for i in range(0, 50):
         after_now=False,
         tzinfo=timezone.get_default_timezone()
     )
-    user = User(identifier=a_identifier,
-                password=a_password, last_login=a_last_login)
-    user.save()
-    users.append(user)
+    djangoUser = DjangoUser.objects.create_user(a_identifier, a_identifier, a_password)
+    users.append(User.objects.get(mirrored_user=djangoUser))
 
 test_username="bigbro"
 test_email="bigbro@email.com"
@@ -37,11 +35,8 @@ a_last_login = fake.date_time_this_month(
     after_now=False,
     tzinfo=timezone.get_default_timezone()
 )
-user = User(identifier=a_identifier,
-            password=a_password, last_login=a_last_login)
-user.save()
-users.append(user)
-
+user = DjangoUser.objects.create_user(a_identifier, a_identifier, a_password)
+users.append(User.objects.get(mirrored_user=user))
 
 # Create Questions
 questions = []
