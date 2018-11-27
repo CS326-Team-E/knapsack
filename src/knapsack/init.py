@@ -12,7 +12,7 @@ from django.contrib.auth.models import Group
 fake = Faker()
 
 # Create user Group
-new_group, created = Group.objects.get_or_create(name='user')
+new_group, created = Group.objects.get_or_create(name='users')
 # Create Users
 users = []
 for i in range(0, 50):
@@ -24,7 +24,7 @@ for i in range(0, 50):
         tzinfo=timezone.get_default_timezone()
     )
     djangoUser = DjangoUser.objects.create_user(a_identifier, a_identifier, a_password)
-    group = Group.objects.get(name='user')
+    group = Group.objects.get(name='users')
     djangoUser.groups.add(group)
     users.append(User.objects.get(mirrored_user=djangoUser))
 
