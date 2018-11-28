@@ -8,6 +8,6 @@ knapsack of the authenticated user.
 
 Additionally, I modified the LibraryView to derive from
 `LoginRequiredMixin` so that if someone is not logged in and tries to visit
-the page, he/she gets redirected to the `LOGIN\_URL` in settings.py.
+the page, he/she gets redirected to the `LOGIN_URL` in settings.py.
 
 Lastly, I contributed heavily to the team write up. 
