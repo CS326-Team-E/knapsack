@@ -14,6 +14,7 @@ vote on.
 * Jacob Goldman
 
 # Video Link
+* https://youtu.be/UmW9Qg2ZqtU
 
 # Design Overview
 To enable login/logout and interaction functionality for our web
