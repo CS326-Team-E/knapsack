@@ -1,0 +1,3 @@
+I contributed to several aspects of this project. Specifically, I split the login page and sign up page from the home page and I did the user interaction for these pages, I wrote the code for the backend and connnect it with frontend. This allow users to create a new account at the sign up page and login after successfully create account. If there is error message that let user couldn't create account or login successfully, it will return the specific error message.
+
+In addition, I fix the bug for init.py after data model is been modified. Lastly, I modified the base template to keep the UI consistant for navigation bar in the website.
