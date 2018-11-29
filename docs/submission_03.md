@@ -14,6 +14,7 @@ vote on.
 * Jacob Goldman
 
 # Video Link
+* https://youtu.be/UmW9Qg2ZqtU
 
 # Design Overview
 To enable login/logout and interaction functionality for our web
@@ -33,10 +34,13 @@ performing queries on the database.
 * Problem: deciding how to add login/logout functionality to our existing
 User model
 * Success: creating a one-to-one mapping between our existing User model
-* and Django's built-in user model
+ and Django's built-in user model
 * Problem: figuring out how to customized views for an authenticated user
 * Success: learning the right query to use to get a user's knapsack and
-* then display the knapsack tools as part of a customized view
-
+ then display the knapsack tools as part of a customized view
 
 # Team Choice
+For the final submission, we would like to create at least one new Knapsack
+tool and connect it to the library/store page. Another task we would like
+to complete is implementing sorting functionality for the library/store and
+divide the library section from the store section.
