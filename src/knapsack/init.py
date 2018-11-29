@@ -24,14 +24,15 @@ for i in range(0, 50):
         after_now=False,
         tzinfo=timezone.get_default_timezone()
     )
-    djangoUser = DjangoUser.objects.create_user(a_identifier, a_identifier, a_password)
+    djangoUser = DjangoUser.objects.create_user(
+        a_identifier, a_identifier, a_password)
     group = Group.objects.get(name='users')
     djangoUser.groups.add(group)
     users.append(User.objects.get(mirrored_user=djangoUser))
 
-test_username="bigbro"
-test_email="bigbro@email.com"
-test_password ="bigbro"
+test_username = "bigbro"
+test_email = "bigbro@email.com"
+test_password = "bigbro"
 user = DjangoUser.objects.create_user(test_username, test_email, test_password)
 a_identifier = "bigbro@email.com"
 a_password = "bigbro"
@@ -65,23 +66,105 @@ for i in range(0, 10):
     a_identifier = fake.text(40)
     a_description = fake.text(200)
     lead = fake.text(75)
-    a_html = f"""
+    a_htmls = []
+    a_htmls.append(f"""
         <div class="py-5 bg-light component">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4">
-						<h2 class="text-center mt-2">{a_identifier}</h2>
-					</div>
-					<div class="col-md-8 pl-5">
-						<p class="lead">{lead}</p>
-						<p>{a_description}</p>
-					</div>
-				</div>
-			</div>
-		</div>
-    """
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h2 class="text-center mt-2">{a_identifier}</h2>
+                    </div>
+                    <div class="col-md-8 pl-5">
+                        <p class="lead">{lead}</p>
+                        <p>{a_description}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    """)
+    a_html.append(f"""
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <table class="table-condensed table-bordered table-striped">
+                        <thead>
+                            <tr>
+                              <th colspan="7">
+                                <span class="btn-group">
+                                    <a class="btn"><i class="icon-chevron-left"></i></a>
+                                    <a class="btn active">February 2012</a>
+                                    <a class="btn"><i class="icon-chevron-right"></i></a>
+                                </span>
+                              </th>
+                            </tr>
+                            <tr>
+                                <th>Su</th>
+                                <th>Mo</th>
+                                <th>Tu</th>
+                                <th>We</th>
+                                <th>Th</th>
+                                <th>Fr</th>
+                                <th>Sa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="muted">29</td>
+                                <td class="muted">30</td>
+                                <td class="muted">31</td>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>6</td>
+                                <td>7</td>
+                                <td>8</td>
+                                <td>9</td>
+                                <td>10</td>
+                                <td>11</td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>13</td>
+                                <td>14</td>
+                                <td>15</td>
+                                <td>16</td>
+                                <td>17</td>
+                                <td>18</td>
+                            </tr>
+                            <tr>
+                                <td>19</td>
+                                <td class="btn-primary"><strong>20</strong></td>
+                                <td>21</td>
+                                <td>22</td>
+                                <td>23</td>
+                                <td>24</td>
+                                <td>25</td>
+                            </tr>
+                            <tr>
+                                <td>26</td>
+                                <td>27</td>
+                                <td>28</td>
+                                <td>29</td>
+                                <td class="muted">1</td>
+                                <td class="muted">2</td>
+                                <td class="muted">3</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    """)
     coorx = random.uniform(42.37, 42.47)
-    coory = random.uniform(-72.53,-72.51)
+    coory = random.uniform(-72.53, -72.51)
     tool = Tool(identifier=a_identifier, html=a_html,
                 description=a_description, location_x=coorx, location_y=coory)
     tool.save()
