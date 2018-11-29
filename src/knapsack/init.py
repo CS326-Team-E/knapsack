@@ -82,7 +82,7 @@ for i in range(0, 10):
             </div>
         </div>
     """)
-    a_html.append(f"""
+    a_htmls.append(f"""
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -165,7 +165,7 @@ for i in range(0, 10):
     """)
     coorx = random.uniform(42.37, 42.47)
     coory = random.uniform(-72.53, -72.51)
-    tool = Tool(identifier=a_identifier, html=a_html,
+    tool = Tool(identifier=a_identifier, html=random.choice(a_htmls),
                 description=a_description, location_x=coorx, location_y=coory)
     tool.save()
     tools.append(tool)
