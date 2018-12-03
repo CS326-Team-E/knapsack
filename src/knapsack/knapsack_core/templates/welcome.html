@@ -9,8 +9,8 @@
   <header style='min-height: 40rem;padding: 15rem 0;   background: -webkit-gradient(linear, left top, left bottom, from(rgba(22, 22, 22, 0.1)), color-stop(75%, rgba(22, 22, 22, 0.5)), to(#161616)), url("{% static 'img/background.jpg' %}");background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url("{% static 'img/background.jpg' %}");background-size: cover;'>
     <div class="container">
       <div class="mx-auto text-center">
-        <h1 style="font-family: 'Varela Round'; font-size: 4rem">KNAPSACK</h1>
-        <h2 class="text-white-50" style="padding-top: 2rem;padding-bottom: 4rem">An innovative platform designed to
+        <h1 style="font-family: 'Nunito'; font-size: 4rem">KNAPSACK</h1>
+        <h2 class="text-white-50" style="padding-top: 2rem; padding-bottom: 4rem; font-family: 'Nunito';">An innovative platform designed to
           empower your campus experience by giving you access to several useful tools.</h2>
           {% if not user.is_authenticated %}
             <a href="{% url 'login' %}" class="btn btn-primary js-scroll-trigger">Sign In</a>
